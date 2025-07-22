@@ -1,12 +1,26 @@
 {
   "name": "challenge-api-rest",
   "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "knex": "node --no-warnings --import tsx ./node_modules/.bin/knex",
-    "lint": "eslint src --ext .ts --fix"
+    "knex": "node --no-warnings --import tsx ./node_modules/knex/bin/cli.js",
+    "lint": "eslint src --ext .ts --fix",
+    "build": "tsup src --out-dir build",
+    "test": "vitest --run"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@rocketseat/eslint-config"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -22,8 +36,11 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^24.0.14",
+    "@types/supertest": "^6.0.3",
     "eslint": "^8.57.1",
+    "supertest": "^7.1.3",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   }
 }
